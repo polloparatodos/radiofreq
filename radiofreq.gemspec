@@ -6,9 +6,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Ryan Sherer"]
   spec.email         = ["ryan.m.sherer@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Convert radio frequency to frequency name}
+  spec.homepage      = "https://github.com/polloparatodos/radiofreq"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
   spec.add_development_dependency "rspec", "~> 3.9"

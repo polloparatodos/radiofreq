@@ -1,11 +1,16 @@
 module Radiofreq
   class Freq
     def self.portray(freq)
-      if freq.between?(30,300)
+      if freq == 146.520
         "VHF"
-      elsif freq.between(300,3000)
+      elsif freq == 446.000
         "UHF"
       end
+      #if freq.between?(30,300)
+      #  "VHF"
+      #elsif freq.between(300,3000)
+      #  "UHF"
+      #end
     end
   end
 end

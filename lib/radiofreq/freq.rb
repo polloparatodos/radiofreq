@@ -4,7 +4,7 @@ module Radiofreq
       case unit
         when 'Hz'
           case freq
-            when < 3
+            when freq <= 3
               "Tremendously Low Frequency (TLF)"
             when 3..30
               "Extremely Low Frequency (ELF)"

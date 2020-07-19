@@ -24,7 +24,7 @@ module Radiofreq
             when 300.001..3000
               "Medium Frequency (MF)"
             else
-              "Invalid frequency provided: #{freq}#{unit}"
+              "Invalid frequency provided: #{freq + unit}"
             end
         when 'MHz'
           case freq
@@ -35,7 +35,7 @@ module Radiofreq
             when 300.001..3000
               "Ultra High Frequency (UHF)"
             else
-              "Invalid frequency provided: #{freq}#{unit}"
+              "Invalid frequency provided: #{freq + unit}"
             end
         when 'GHz'
           case freq
@@ -46,7 +46,7 @@ module Radiofreq
             when 300.001..3000
               "Tremendously High Frequency (THF)"
             else
-              "Invalid frequency provided: #{freq}#{unit}"
+              "Invalid frequency provided: #{freq + unit}"
             end
         else
           "Invalid frequency unit: #{unit}"

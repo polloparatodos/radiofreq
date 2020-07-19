@@ -1,4 +1,5 @@
 require 'radiofreq'
+
 describe Radiofreq::Freq do
   it "Very High Frequency (VHF)" do
     expect(Radiofreq.Freq.portray(146.520)).to eql("VHF")

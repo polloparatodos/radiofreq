@@ -13,7 +13,7 @@ module Radiofreq
             when 300.001..3000
               "Ultra Low Frequency (ULF)"
             else
-              "Invalid frequency provided: #{freq.to_string + unit}"
+              "Invalid frequency provided: #{freq}#{unit}"
             end
         when 'kHz'
           case freq

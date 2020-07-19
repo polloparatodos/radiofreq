@@ -1,6 +1,9 @@
 require 'radiofreq'
 
 describe Radiofreq::Freq do
+  it "Tremendously Low Frequency (TLF)" do
+    expect(Radiofreq::Freq.portray(.001, 'Hz')).to include("TLF")
+  end
   it "Very High Frequency (VHF)" do
     expect(Radiofreq::Freq.portray(146.520, 'MHz')).to include("VHF")
   end

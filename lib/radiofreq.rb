@@ -1,4 +1,5 @@
 require "radiofreq/version"
+require "radiofreq/freq"
 
 module Radiofreq
   class Error < StandardError; end

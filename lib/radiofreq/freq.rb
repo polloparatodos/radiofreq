@@ -48,7 +48,6 @@ module Radiofreq
             else
               "Invalid frequency provided: #{freq + unit}"
             end
-        end
       end
     end
   end

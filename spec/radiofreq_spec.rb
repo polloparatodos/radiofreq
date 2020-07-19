@@ -8,4 +8,8 @@ describe Radiofreq::Freq do
   it "Ultra High Frequency (UHV)" do
     expect(Radiofreq::Freq.portray(446.000, 'MHz')).to include("UHF")
   end
+
+  it "Invalid Frequency" do
+    expect(Radiofreq::Freq.portray(3, 'Invalid')).to start_with("Invalid frequency unit:")
+  end
 end

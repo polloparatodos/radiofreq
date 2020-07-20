@@ -1,3 +1,4 @@
+# This doesn't work. I pushed as WIP.
 module Radiofreq
   class Freq
     def self.portray(freq, unit)

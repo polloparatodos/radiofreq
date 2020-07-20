@@ -1,4 +1,3 @@
-# This doesn't work. I pushed as WIP.
 module Radiofreq
   class Freq
     def self.portray(freq, unit)
@@ -25,15 +24,16 @@ module Radiofreq
           'GHz' => 'Tremendously High Frequency'
         }
       }
-      frequencies.each do|ranges,units|
-        if ranges === freq
-          units.each do|units,description|
-            if units === unit
-              puts description
-            end
+      filtered_freqs = frequencies.select{|freq_range,unit_map|freq_range === freq}
+      if filtered_freqs.empty?
+        return "Invalid frequency provided: #{freq}"
+      else
+        filtered_freqs.each do|key,value|
+          if value[unit].nil?
+            return "Invalid frequency unit: #{unit}"
+          else
+            return value[unit]
           end
-        else
-          "Invalid frequency unit: #{unit}"
         end
       end
     end

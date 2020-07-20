@@ -1,35 +1,39 @@
 module Radiofreq
   class Freq
     def self.portray(freq, unit)
-      case freq
-      when -Float::INFINITY..3
-        "Tremendously Low Frequency (TLF)"
-      when 3..30 + unit
-        "Extremely Low Frequency (ELF)"
-      when 30.001..300
-        "Super Low Frequency (SLF)"
-      when 300.001..3000
-        "Ultra Low Frequency (ULF)"
-      when 3..30
-        "Very Low Frequency VLF)"
-      when 30.001..300
-        "Low Frequency (LF)"
-      when 300.001..3000
-        "Medium Frequency (MF)"
-      when 3..30
-        "High Frequency (HF)"
-      when 30.001..300
-        "Very High Frequency (VHF)"
-      when 300.001..3000
-        "Ultra High Frequency (UHF)"
-      when 3..30
-        "Super High Frequency (SHF)"
-      when 30.001..300
-        "Extremely High Frequency (EHF)"
-      when 300.001..3000
-        "Tremendously High Frequency (THF)"
-      else
-        "Wat?"
+      frequencies = {
+        -Float::INFINITY..3 => {
+          'Hz' => 'Tremendously Low Frequency (TLF)'
+        },
+        3..30 => {
+          'Hz' => 'Extremely Low Frequency (ELF)',
+          'kHz' => 'Very Low Frequency (VLF)',
+          'MHz' => 'High Frequency (HF)',
+          'GHz' => 'Super High Frequency (SHF)'
+        },
+        30.001..300 => {
+          'Hz' => 'Super Low Frequency (SLF)',
+          'kHz' => 'Low Frequency (LF)',
+          'MHz' => 'Very High Frequency (VHF)',
+          'GHz' => 'Extremely High Frequency (EHF)'
+        },
+        300.001..3000 => {
+          'Hz' => 'Ultra Low Frequency (ULF)',
+          'kHz' => 'Medium Frequency (MF)',
+          'MHz' => 'Ultra High Frequency (UHF)',
+          'GHz' => 'Tremendously High Frequency'
+        }
+      }
+      frequencies.each do|ranges,units|
+        if ranges === freq
+          units.each do|units,description|
+            if units === unit
+              puts description
+            end
+          end
+        else
+          "Invalid frequency unit: #{unit}"
+        end
       end
     end
   end

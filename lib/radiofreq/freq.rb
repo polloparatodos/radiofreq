@@ -1,55 +1,40 @@
 module Radiofreq
   class Freq
     def self.portray(freq, unit)
-      case unit
-        when 'Hz'
-          case freq
-            when -Float::INFINITY..3
-              "Tremendously Low Frequency (TLF)"
-            when 3..30
-              "Extremely Low Frequency (ELF)"
-            when 30.001..300
-              "Super Low Frequency (SLF)"
-            when 300.001..3000
-              "Ultra Low Frequency (ULF)"
-            else
-              "Invalid frequency provided: #{freq.to_s + unit}"
-            end
-        when 'kHz'
-          case freq
-            when 3..30
-              "Very Low Frequency VLF)"
-            when 30.001..300
-              "Low Frequency (LF)"
-            when 300.001..3000
-              "Medium Frequency (MF)"
-            else
-              "Invalid frequency provided: #{freq.to_s + unit}"
-            end
-        when 'MHz'
-          case freq
-            when 3..30
-              "High Frequency (HF)"
-            when 30.001..300
-              "Very High Frequency (VHF)"
-            when 300.001..3000
-              "Ultra High Frequency (UHF)"
-            else
-              "Invalid frequency provided: #{freq.to_s + unit}"
-            end
-        when 'GHz'
-          case freq
-            when 3..30
-              "Super High Frequency (SHF)"
-            when 30.001..300
-              "Extremely High Frequency (EHF)"
-            when 300.001..3000
-              "Tremendously High Frequency (THF)"
-            else
-              "Invalid frequency provided: #{freq.to_s + unit}"
-            end
-        else
-          "Invalid frequency unit: #{unit}"
+      frequencies = {
+        -Float::INFINITY..3 => {
+          'Hz' => 'Tremendously Low Frequency (TLF)'
+        },
+        3..30 => {
+          'Hz' => 'Extremely Low Frequency (ELF)',
+          'kHz' => 'Very Low Frequency (VLF)',
+          'MHz' => 'High Frequency (HF)',
+          'GHz' => 'Super High Frequency (SHF)'
+        },
+        30.001..300 => {
+          'Hz' => 'Super Low Frequency (SLF)',
+          'kHz' => 'Low Frequency (LF)',
+          'MHz' => 'Very High Frequency (VHF)',
+          'GHz' => 'Extremely High Frequency (EHF)'
+        },
+        300.001..3000 => {
+          'Hz' => 'Ultra Low Frequency (ULF)',
+          'kHz' => 'Medium Frequency (MF)',
+          'MHz' => 'Ultra High Frequency (UHF)',
+          'GHz' => 'Tremendously High Frequency'
+        }
+      }
+      filtered_freqs = frequencies.select{|freq_range,unit_map|freq_range === freq}
+      if filtered_freqs.empty?
+        return "Invalid frequency provided: #{freq}"
+      else
+        filtered_freqs.each do|key,value|
+          if value[unit].nil?
+            return "Invalid frequency unit: #{unit}"
+          else
+            return value[unit]
+          end
+        end
       end
     end
   end

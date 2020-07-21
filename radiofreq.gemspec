@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Ryan Sherer"]
   spec.email         = ["ryan.m.sherer@gmail.com"]
 
-  spec.summary       = %q{Convert radio frequency to frequency name}
+  spec.summary       = "Convert radio frequency to frequency name"
   spec.homepage      = "https://github.com/polloparatodos/radiofreq"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")

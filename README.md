@@ -20,7 +20,13 @@ Or install it yourself as:
 
 ## Usage
 
-Radiofreq::Freq.portray(446.000, 'MHz')
+```
+$ irb
+irb(main):001:0> require "radiofreq"
+=> true
+irb(main):002:0> Radiofreq::Freq.portray(446.000, 'MHz')
+=> "Ultra High Frequency (UHF)"
+```
 
 ## Development
 

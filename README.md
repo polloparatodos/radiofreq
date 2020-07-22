@@ -1,4 +1,4 @@
-# Radiofreq
+# radiofreq
 
 A gem that you can use to convert a frequency to the corresponding frequency name.
 

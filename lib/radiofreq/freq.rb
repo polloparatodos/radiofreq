@@ -1,7 +1,9 @@
 module Radiofreq
+  # Convert given frequency to frequency descriptive unit
+  # Example: 446.000MHz would return: Ultra High Frequency (UHF)
   class Freq
-    def self.portray(freq, unit)
-      frequencies = {
+    def self.frequencies
+      {
         -Float::INFINITY..3 => {
           'Hz' => 'Tremendously Low Frequency (TLF)'
         },
@@ -24,16 +26,30 @@ module Radiofreq
           'GHz' => 'Tremendously High Frequency'
         }
       }
-      filtered_freqs = frequencies.select{|freq_range,unit_map|freq_range === freq}
-      if filtered_freqs.empty?
+    end
+    def self.portray(freq, unit)
+      frequency_range = get_frequency_range(freq)
+      if frequency_range.empty?
         return "Invalid frequency provided: #{freq}"
       else
-        filtered_freqs.each do|key,value|
-          if value[unit].nil?
-            return "Invalid frequency unit: #{unit}"
-          else
-            return value[unit]
-          end
+        return get_descriptive_unit(frequency_range,unit)
+      end
+    end
+    def self.get_frequency_range(freq)
+      filtered_frequencies = frequencies.select{|freq_range,_|freq_range === freq}
+      if filtered_frequencies
+        return filtered_frequencies
+      else
+        return "Invalid frequency provided: #{freq}"
+      end
+    end
+    def self.get_descriptive_unit(range,unit)
+      range.each do|key,value|
+        found_unit = value[unit]
+        if found_unit
+          return found_unit
+        else
+          return "Invalid frequency unit: #{unit}"
         end
       end
     end

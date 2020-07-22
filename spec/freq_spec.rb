@@ -23,7 +23,8 @@ describe Radiofreq::Freq do
       # Values above 3000 GHz (3THz) are non-existent, according to the ITU
       # https://en.wikipedia.org/wiki/Terahertz_radiation
       expect(Radiofreq::Freq.portray(3001, 'GHz')).to start_with("Invalid frequency provided:")
-      # Reverse the frequency and unit
+    end
+    it "Reverse the frequency and unit" do
       # Frequency is checked first, so we should fail before we get to traversing into the range object
       expect(Radiofreq::Freq.portray('GHz', '3001')).to start_with("Invalid frequency provided:")
     end

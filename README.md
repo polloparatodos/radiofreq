@@ -1,4 +1,4 @@
-# Radiofreq
+# radiofreq
 
 A gem that you can use to convert a frequency to the corresponding frequency name.
 
@@ -20,7 +20,12 @@ Or install it yourself as:
 
 ## Usage
 
-Radiofreq::Freq.portray(446.000, 'MHz')
+```
+irb(main):001:0> require "radiofreq"
+=> true
+irb(main):002:0> Radiofreq::Freq.portray(446.000, 'MHz')
+=> "Ultra High Frequency (UHF)"
+```
 
 ## Development
 
